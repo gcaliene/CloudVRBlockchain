@@ -1,0 +1,20 @@
+{
+  "name": "CloudVRBlockchain",
+  "version": "1.0.0",
+  "description": "Blockchain project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcaliene/CloudVRBlockchain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcaliene/CloudVRBlockchain/issues"
+  },
+  "homepage": "https://github.com/gcaliene/CloudVRBlockchain#readme"
+}
