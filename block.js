@@ -7,4 +7,6 @@ class Block {
     }
 }
 
-const block1 = new Block();
+const block1 = new Block('01/11/89', 'foo-lasthash', 'foo-hash', 'foo-data');
+
+console.log('block1', block1)
