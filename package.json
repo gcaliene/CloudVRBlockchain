@@ -4,8 +4,8 @@
   "description": "Blockchain project",
   "main": "index.js",
   "scripts": {
-    "start": "node block.js",
-    "start:dev": "nodemon block.js",
+    "start": "node block-tdd.js",
+    "start:dev": "nodemon block-tdd.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
