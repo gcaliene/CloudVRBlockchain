@@ -1,3 +1,6 @@
+const Block = require('./block-tdd') //.js is implicit specified by node.js
+
+
 describe('Block', () => {
     const timestamp = 'anydata';
     const lastHash = 'foohash why not';
