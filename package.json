@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node block-tdd.js",
     "start:dev": "nodemon block-tdd.js",
-    "test": "jest *.test.js"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
