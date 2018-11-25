@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gcaliene/CloudVRBlockchain/issues"
   },
-  "homepage": "https://github.com/gcaliene/CloudVRBlockchain#readme"
+  "homepage": "https://github.com/gcaliene/CloudVRBlockchain#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
