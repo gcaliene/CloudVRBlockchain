@@ -25,4 +25,8 @@ describe('Block', () => {
             expect(genesisBlock).toEqual(GENESIS_DATA);
         })
     })
+
+    describe('mindBlock()', () => {
+        
+    })
 });
