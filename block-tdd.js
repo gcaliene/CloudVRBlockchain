@@ -8,6 +8,7 @@ class Block {
         this.data = data;
     }
 
+    //factory function
     static genesis(){
         // return new Block(GENESIS_DATA)
         return new this(GENESIS_DATA)
