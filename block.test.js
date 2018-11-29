@@ -26,7 +26,7 @@ describe('Block', () => {
         })
     })
 
-    describe('mindBlock()', () => {
+    describe('minedBlock()', () => {
         const lastBlock = Block.genesis();
         const data = 'mined data';
         const minedBlock = Block.mineBlock({ lastBlock, data })
@@ -37,7 +37,15 @@ describe('Block', () => {
         })
 
         it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
-            expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+            expect(minedBlock.lastHash).toEqual(lastBlock.hash); // the actual value goes inthe expect statment and the expected value goes in the toEqual in JEST
+        })
+
+        it('sets the `data`', () => {
+            expect(minedBlock.data).toEqual(data);
+        });
+
+        it('sets a `timestamp`', () => {
+            expect(minedBlock.timestamp).not.toEqual(undefined)
         })
     })
 });
