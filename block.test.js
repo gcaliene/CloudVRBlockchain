@@ -27,6 +27,8 @@ describe('Block', () => {
     })
 
     describe('mindBlock()', () => {
-        
+        const lastBlock = Block.genesis();
+        const data = 'mined data';
+        const mineBlock = Block.mineBlock({ lastBlock, data })
     })
 });
