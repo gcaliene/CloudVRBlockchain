@@ -29,6 +29,15 @@ describe('Block', () => {
     describe('mindBlock()', () => {
         const lastBlock = Block.genesis();
         const data = 'mined data';
-        const mineBlock = Block.mineBlock({ lastBlock, data })
+        const minedBlock = Block.mineBlock({ lastBlock, data })
+        
+        it('returns a Block instance', () => {
+            console.log(minedBlock instanceof Block);
+            expect(minedBlock instanceof Block).toBe(true)
+        })
+
+        it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
+            expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+        })
     })
 });
