@@ -1,12 +1,20 @@
 const Block = require('./block-tdd') //.js is implicit specified by node.js
-const {GENESIS_DATA} = require('./config')
+const {
+    GENESIS_DATA
+} = require('./config')
+const cryptoHash = require('./crypto-hash')
 
 describe('Block', () => {
     const timestamp = 'anydata';
     const lastHash = 'foohash why not';
-    const hash =  'har-hash';
+    const hash = 'har-hash';
     const data = ['blockchain', 'data'];
-    const block = new Block({ timestamp, lastHash, hash, data });
+    const block = new Block({
+        timestamp,
+        lastHash,
+        hash,
+        data
+    });
 
     it('has a timestamp, lasthash, hash, and data property', () => {
         expect(block.timestamp).toEqual(timestamp);
@@ -29,8 +37,11 @@ describe('Block', () => {
     describe('minedBlock()', () => {
         const lastBlock = Block.genesis();
         const data = 'mined data';
-        const minedBlock = Block.mineBlock({ lastBlock, data })
-        
+        const minedBlock = Block.mineBlock({
+            lastBlock,
+            data
+        })
+
         it('returns a Block instance', () => {
             console.log(minedBlock instanceof Block);
             expect(minedBlock instanceof Block).toBe(true)
@@ -47,5 +58,10 @@ describe('Block', () => {
         it('sets a `timestamp`', () => {
             expect(minedBlock.timestamp).not.toEqual(undefined)
         })
+
+        it('creates a SHA-256 `hash` based on the proper inputs', () => {
+            expect(minedBlock.hash).toEqual(cryptoHash(minedBlock.timestamp, lastBlock.hash, data))
+        })
+
     })
 });
