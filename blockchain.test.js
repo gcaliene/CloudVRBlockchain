@@ -23,6 +23,26 @@ describe('Blockchain', () => {
         describe('when the chain does not start with the genesis block', () => {
             it('returns false', () => {})
         })
+
+        describe('when the chain starts with the genesis block and has multiple blocks', () => {
+            describe('and a lastHash Reference has changed', () => {
+                it('returns false', () => {
+
+                })
+            })
+
+            describe('and the chain contains a block with an invalid field', () => {
+                it( 'returns false', () => {
+
+                })
+            })
+
+            describe('and the chain does not contain any invalid blocks', () => {
+                it('returns true', () => {
+
+                })
+            })
+        })
     })
 })
 
