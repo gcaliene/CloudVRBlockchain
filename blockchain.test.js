@@ -40,7 +40,7 @@ describe('Blockchain', () => {
 
                     blockchain.chain[2].lastHash = 'broken-lastHash';
 
-                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false)
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
 
                 })
             })
