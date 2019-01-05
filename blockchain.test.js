@@ -2,7 +2,12 @@ const Blockchain = require('./blockchain');
 const Block = require('./block-tdd');
 
 describe('Blockchain', () => {
-    const blockchain = new Blockchain();
+    //const blockchain = new Blockchain(); //we need new blockchain for each test
+    let blockchain;
+
+    beforeEach(() => {
+        blockchain = new Blockchain(); //now we have a fresh instance of the blockchain in between each test
+    })
 
     it('contains a `chain` Array instance', () => {
         expect(blockchain.chain instanceof Array).toBe(true);
@@ -32,12 +37,15 @@ describe('Blockchain', () => {
         })
 
         describe('when the chain starts with the genesis block and has multiple blocks', () => {
+
+            beforeEach(() => {
+                blockchain.addBlock({ data: 'Bees'})
+                blockchain.addBlock({ data: 'Banjos'})
+                blockchain.addBlock({ data: 'Schrute'})
+            })
+
             describe('and a lastHash Reference has changed', () => {
                 it('returns false', () => {
-                    blockchain.addBlock({ data: 'Bees'})
-                    blockchain.addBlock({ data: 'Banjos'})
-                    blockchain.addBlock({ data: 'Schrute'})
-
                     blockchain.chain[2].lastHash = 'broken-lastHash';
 
                     expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
@@ -47,13 +55,15 @@ describe('Blockchain', () => {
 
             describe('and the chain contains a block with an invalid field', () => {
                 it('returns false', () => {
+                    blockchain.chain[2].data = 'some-bad-data';
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
 
                 })
             })
 
             describe('and the chain does not contain any invalid blocks', () => {
                 it('returns true', () => {
-
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
                 })
             })
         })
