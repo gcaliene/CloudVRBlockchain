@@ -84,13 +84,14 @@ describe('Blockchain', () => {
 
         describe('when the new chain is longer', () => {
             beforeEach(() =>  {
-                blockchain.addBlock({ data: 'Bees'})
-                blockchain.addBlock({ data: 'Banjos'})
-                blockchain.addBlock({ data: 'Schrute'})
+                newChain.addBlock({ data: 'Bees'})
+                newChain.addBlock({ data: 'Banjos'})
+                newChain.addBlock({ data: 'Schrute'})
             })
 
             describe('and the chain is invalid', () => {
                 it('does not replace the chain', () => {
+                    // console.log(newChain)
                     newChain.chain[2].hash = 'some-fake-hash';
 
                     blockchain.replaceChain(newChain.chain);
