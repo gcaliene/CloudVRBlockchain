@@ -15,6 +15,23 @@ class Blockchain {
         this.chain.push(newBlock)
     }
 
+    //replaceChain is not a static method because it is based on an individual specific instance of the blockchain
+    replaceChain(chain){
+        if(chain.length <= this.chain.length){
+            console.error('Incomingchain must be longer')
+            return;
+        }
+
+        if (!Blockchain.isValidChain(chain)){
+            console.error('Incomingchain must be valid')
+            return;
+        }
+        
+        console.log('chain is valid, and replacing chain with ', chain)
+        this.chain = chain; //argument chain will replace the local block chain array
+
+    }
+
     static isValidChain(chain) {
         if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
             return false;
