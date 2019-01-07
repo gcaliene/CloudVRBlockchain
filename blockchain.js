@@ -26,7 +26,7 @@ class Blockchain {
             console.error('Incomingchain must be valid')
             return;
         }
-        
+
         console.log('chain is valid, and replacing chain with ', chain)
         this.chain = chain; //argument chain will replace the local block chain array
 
@@ -41,11 +41,11 @@ class Blockchain {
         for(let i = 1; i<chain.length; i++) {
             const block = chain[i];
             const actualLastHash = chain[i-1].hash;
-            const { timestamp, lastHash, hash, data } = block;
+            const { timestamp, lastHash, hash, nonce, difficulty, data } = block;
 
             if (lastHash !== actualLastHash) return false;
 
-            const validatedHash = cryptoHash(timestamp, lastHash, data);
+            const validatedHash = cryptoHash(timestamp, lastHash, nonce, difficulty, data);
             if (hash !== validatedHash) return false;
         }
 
