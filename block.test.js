@@ -1,11 +1,12 @@
 const Block = require('./block-tdd') //.js is implicit specified by node.js
 const {
-    GENESIS_DATA
+    GENESIS_DATA,
+    MINE_RATE
 } = require('./config')
 const cryptoHash = require('./crypto-hash')
 
 describe('Block', () => {
-    const timestamp = 'anydata';
+    const timestamp = 1500;
     const lastHash = 'foohash why not';
     const hash = 'har-hash';
     const data = ['blockchain', 'data'];
@@ -83,4 +84,18 @@ describe('Block', () => {
                 .toEqual('0'.repeat(minedBlock.difficulty))
         })
     })
+
+    describe('adjustDifficulty()', () => {
+        it('raises the difficulty for a quickly mined block', () => {
+            expect(Block.adjustDifficulty({
+                originalBlock: block, timestamp: block.timestamp + MINE_RATE - 100
+            })).toEqual(block.difficulty+1);
+        })
+        it('lowers the difficulty for a slowly mined block', () => {
+            expect(Block.adjustDifficulty({
+                originalBlock: block, timestamp: block.timestamp + MINE_RATE + 100
+            })).toEqual(block.difficulty-1);
+        })
+    })
+
 });
