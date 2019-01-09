@@ -1,4 +1,5 @@
-const Block = require('./block-tdd') //.js is implicit specified by node.js
+const hexToBinary = require('hex-to-binary');
+const Block = require('./block-tdd'); //.js is implicit specified by node.js
 const {
     GENESIS_DATA,
     MINE_RATE
@@ -80,7 +81,7 @@ describe('Block', () => {
         })
 
         it('sets the `hash` that matches the difficulty criteria', () => {
-            expect(minedBlock.hash.substring(0, minedBlock.difficulty))
+            expect(hexToBinary(minedBlock.hash).substring(0, minedBlock.difficulty))
                 .toEqual('0'.repeat(minedBlock.difficulty))
         })
 
