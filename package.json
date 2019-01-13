@@ -4,8 +4,8 @@
   "description": "Blockchain project",
   "main": "index.js",
   "scripts": {
-    "start": "node block-tdd.js",
-    "start:dev": "nodemon block-tdd.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "test": "jest --watchAll"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "hex-to-binary": "^1.0.1"
   }
 }
