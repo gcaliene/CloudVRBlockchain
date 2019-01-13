@@ -1,10 +1,15 @@
 const express = require('express');
 // const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
+const PubSub = require('./pubsub');
 
 const app = express();
 const blockchain = new Blockchain();
+const pubsub = new PubSub({ blockchain });
+
 const PORT = 3000;
+
+setTimeout(() => pubsub.broadcastChain(), 1000);
 
 app.use(express.json());
 
