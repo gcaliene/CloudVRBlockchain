@@ -10,6 +10,9 @@
     "test": "jest --watchAll",
     "start-redis": "redis-server --daemonize yes"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gcaliene/CloudVRBlockchain.git"
