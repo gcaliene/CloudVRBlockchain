@@ -3,8 +3,8 @@ const Block = require('./block-tdd'); //.js is implicit specified by node.js
 const {
     GENESIS_DATA,
     MINE_RATE
-} = require('./config')
-const cryptoHash = require('./crypto-hash')
+} = require('../config')
+const cryptoHash = require('../util/crypto-hash')
 
 describe('Block', () => {
     const timestamp = 1500;
