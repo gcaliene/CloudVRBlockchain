@@ -30,6 +30,8 @@ describe('Wallet', () => {
             ).toBe(true);
         });
 
+        // indutny/elliptic
+
         it('does not verify an invalid signature', () => {
             expect(
                 verifySignature({
