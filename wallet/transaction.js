@@ -5,11 +5,12 @@ class Transaction{
     constructor({senderWallet, recipient, amount}) {
         this.id = uuid();
 
-        this.senderWallet = senderWallet;
-        this.recipient = recipient;
-        this.amount = amount;
+        // this.senderWallet = senderWallet;
+        // this.recipient = recipient;
+        // this.amount = amount;
         // this.outputMap = {};
         this.outputMap = this.createOutputMap({ senderWallet, recipient, amount });
+        this.input = this.createInput({ senderWallet, outputMap: this.outputMap })
     }
 
     createOutputMap({ senderWallet, recipient, amount }) {
@@ -20,6 +21,14 @@ class Transaction{
 
         return outputMap
     }
-}
 
+    createInput({ senderWallet, outputMap }) {
+        return {
+            timestamp: Date.now(),
+            amount: senderWallet.balance,
+            address: senderWallet.publicKey,
+            signature: senderWallet.sign(outputMap)
+        };
+    }
+}
 module.exports = Transaction;
