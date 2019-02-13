@@ -31,4 +31,5 @@ class Transaction{
         };
     }
 }
+//Now transactions are official and signed by the sender wallet
 module.exports = Transaction;
