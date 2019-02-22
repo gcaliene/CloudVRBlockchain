@@ -7,6 +7,11 @@ class TransactionPool {
     this.transactionMap[transaction.id] = transaction;
   }
 
+  //this will sync up transaction pools when a new peer starts up
+  setMap(transactionMap) {
+    this.transactionMap = transactionMap;
+  }
+
   //without this, new transactions will keep piling up
   existingTransaction({ inputAddress }) {
     const transactions = Object.values(this.transactionMap);
